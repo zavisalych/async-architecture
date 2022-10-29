@@ -1,0 +1,52 @@
+﻿@page
+@model TaskTracker.Pages.PopugsModel
+
+@{
+    ViewData["Title"] = "Popugs";
+}
+
+<h1>Popugs</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Popug[0].Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popug[0].PublicId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popug[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popug[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Popug[0].Role)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Popug) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+﻿@page
+@model TaskTracker.Pages.Tasks.AssignModel
+@using TaskTracker.Entities;
+
+@{
+    ViewData["Title"] = "Assign";
+}
+
+<h1>Assign tasks</h1>
+
+<p>@Model.Message</p>
+
+@{
+    if ((Role.Manager | Role.Admin).HasFlag(Model.Role)) {
+
+    <h3>Are you sure you want to re-assign all tasks?</h3>
+    <div>
+        <form method="post">
+            <input type="submit" value="Shuffle!" class="btn btn-danger" /> 
+        </form>
+    </div>
+    }
+    else {
+        <p>You don't have enough right to assign tasks.</p>
+    }
+}

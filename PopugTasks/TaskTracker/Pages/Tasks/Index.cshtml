@@ -1,0 +1,46 @@
+﻿@page
+@model TaskTracker.Pages.Tasks.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PopugTask[0].PublicId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PopugTask[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PopugTask[0].TaskStatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PopugTask) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublicId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskStatus)
+            </td>
+            <td>
+                <a asp-page="./Complete" asp-route-id="@item.Id">Complete task</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

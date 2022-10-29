@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@using TaskTracker.Entities
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Popug TaskTracker</h1>
+
+    @{
+        if (string.IsNullOrEmpty(Model.Username))
+        {
+                <p>Not logged in. <a asp-page="/Login">Login</a></p>
+        }
+        else
+        {
+                <p>Hello, @Model.Username as @Model.Role! You can <a asp-page="/Logout">log out</a> if you want.</p>
+        }
+    }
+
+    @{
+        if ((Role.Manager | Role.Admin).HasFlag(Model.Role))
+        {
+            <form id="assignform" action="/Tasks/Assign" method="get">
+                <button>Assign Tasks</button>
+            </form>
+        }
+    }
+</div>
