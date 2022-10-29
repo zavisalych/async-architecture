@@ -1,0 +1,18 @@
+﻿@page
+@model AuthN.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Popug Auth</h1>
+
+    @{if (string.IsNullOrEmpty(Model.Username)) {
+            <p>Not logged in. <a asp-page="/Login">Login</a></p>
+        } else {
+            <p>Hello, @Model.Username as @Model.Role! You can <a asp-page="/Logout">log out</a> if you want.</p>
+        }
+    }
+
+</div>

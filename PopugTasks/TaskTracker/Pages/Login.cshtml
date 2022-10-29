@@ -1,0 +1,41 @@
+﻿@page
+@model TaskTracker.Pages.LoginModel;
+@{
+    ViewData["Title"] = "Login";
+}
+<h2>Login</h2>
+
+<p>@Model.Message</p>
+
+<div class="row">
+    <div class="col-md-8">
+        <section>
+            <form method="post" class="form-horizontal" asp-antiforgery="false" asp-page="Login">
+                <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                <div class="form-group">
+                    <label asp-for="Username" class="col-md-2 control-label">User</label>
+                    <div class="col-md-10">
+                        <input asp-for="Username" type="text" name="Username" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Password" class="col-md-2 control-label">Password</label>
+                    <div class="col-md-10">
+                        <input asp-for="Password" type="password" name="Password" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
